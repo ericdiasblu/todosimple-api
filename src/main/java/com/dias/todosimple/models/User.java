@@ -1,5 +1,6 @@
 package com.dias.todosimple.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
@@ -15,8 +16,6 @@ import java.util.Objects;
 
 @Entity
 @Table(name = User.TABLE_NAME)
-@Getter
-@Setter
 @AllArgsConstructor
 public class User {
     public User() {
@@ -50,6 +49,39 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Task> tasks = new ArrayList<Task>();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @JsonIgnore
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
 
     @Override
     public boolean equals(Object obj) {
