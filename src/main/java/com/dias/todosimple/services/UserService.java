@@ -16,7 +16,7 @@ public class UserService {
     private UserRepository userRepository;
 
     public User findById(Long id) {
-        Optional<User> user = this.userRepository.findById(id);
+        Optional<User> user = userRepository.findById(id);
         return user.orElseThrow(() -> new RuntimeException(
                 "Usuário não encontrado! Id: " + id + ", Tipo: " + User.class.getName()
 

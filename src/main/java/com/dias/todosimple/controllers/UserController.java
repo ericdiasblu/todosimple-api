@@ -20,8 +20,8 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> findById(@PathVariable Long Id) {
-        User obj = userService.findById(Id);
+    public ResponseEntity<User> findById(@PathVariable Long id) {
+        User obj = this.userService.findById(id);
         return ResponseEntity.ok().body(obj);
     }
 
